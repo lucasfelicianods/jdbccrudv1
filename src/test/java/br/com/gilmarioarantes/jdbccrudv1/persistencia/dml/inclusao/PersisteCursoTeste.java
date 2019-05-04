@@ -32,4 +32,26 @@ public class PersisteCursoTeste {
             Assert.assertTrue(false);
         }
     }
+    
+    
+    @Test
+    public void persisteCursosTestLucas(){
+
+        logger.info("Lucas Feliciano: " + this.getClass().getSimpleName());
+
+
+        Long ids[] = {new Long(1), new Long(2), new Long(3), new Long(4)};
+
+        String cursos[] = {"Lucas Feliciano"};
+
+        try{
+                Curso curso = new Curso();
+                curso.setId(90l);
+                curso.setNome("Lucas Feliciano");
+                Assert.assertTrue(new PersisteCurso().persisteCurso(curso));
+        }catch (Exception e){
+            logger.error("Erro ao persistir o curso!", e);
+            Assert.assertTrue(false);
+        }
+    }
 }

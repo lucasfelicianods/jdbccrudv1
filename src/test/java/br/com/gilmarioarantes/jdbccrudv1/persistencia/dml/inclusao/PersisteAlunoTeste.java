@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -34,4 +36,24 @@ public class PersisteAlunoTeste {
         }
         Assert.assertTrue(result);
     }
+    
+    @Test
+    public void persisteAlunoTest1(){
+        logger.info("Executando o método persisteAlunoTest() da classe: " + this.getClass().getSimpleName());
+        Aluno aluno = new Aluno();
+        aluno.setId(1000L);
+        aluno.setSexo("M");
+        aluno.setMatricula("12345");
+        aluno.setNome("Fabio Henrique");
+        aluno.setDataNascimento(new Timestamp(Calendar.getInstance().getTime().getTime()));
+        boolean result = false;
+        try {
+            result = new PersisteAluno().persisteAluno(aluno);
+        }catch (Exception e){
+            result = false;
+            logger.error("Erro ao persistir o Aluno!", e);
+        }
+        Assert.assertTrue(result);
+    }
+
 }
